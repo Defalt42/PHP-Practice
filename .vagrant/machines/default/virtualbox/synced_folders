@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"C:/Users/bryan.gilbert/Documents/PHP Practice/PHP-Practice","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
