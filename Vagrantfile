@@ -12,7 +12,7 @@ VAGRANT_BOX = 'centos/7'
 # Name for machine
 VM_NAME = 'web-dev'
 
-# VM User — 'vagrant' by default
+# VM User ï¿½ 'vagrant' by default
 VM_USER = 'bryan'
 
 Vagrant.configure("2") do |config|
@@ -64,7 +64,7 @@ Vagrant.configure("2") do |config|
   #
    config.vm.provider "virtualbox" do |vb|
      # Display the VirtualBox GUI when booting the machine
-     #vb.gui = true
+     vb.gui = true
      vb.name = VM_NAME
      # Customize the amount of memory on the VM:
      vb.memory = "2048"
@@ -79,11 +79,14 @@ Vagrant.configure("2") do |config|
    config.vm.provision "shell", inline: <<-SHELL
      sudo yum update
      sudo yum -y install git
-	 sudo yum -y install epel-release
+	   sudo yum -y install epel-release
      sudo yum -y install emacs
-	 sudo yum -y install httpd
-	 sudo yum -y install phpmyadmin
-	 sudo yum -y install mysql
+     sudo yum -y groupinstall "Server with GUI"
+     sudo yum -y groupinstall "Xfce"
+	   sudo yum -y install httpd
+	   sudo yum -y install phpmyadmin
+	   sudo yum -y install mysql
+     sudo yum -y install mariadb.server
      sudo yum -y install build-essential
    SHELL
 end
