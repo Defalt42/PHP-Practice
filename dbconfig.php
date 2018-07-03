@@ -4,7 +4,6 @@
 
   if(!$conn)
   {
-    echo "Oh no!";
     die("Connection failed: " . mysqli_connect_error());
   }
 
