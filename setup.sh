@@ -6,4 +6,4 @@ sudo systemctl start mariadb
 sudo systemctl restart httpd
 sudo systemctl restart mariadb
 
-sudo cp /vagrant/{index.html, save-data.php} /var/www/html
+sudo cp /vagrant/{index.html,save-data.php} /var/www/html
