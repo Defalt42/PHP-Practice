@@ -6,22 +6,17 @@
     $email = $_POST['email'];
     $phone = $_POST['phone'];
 
-    if (mysqli_connect_errno()) {
-      printf("Connect failed: %s\n", mysqli_connect_error());
-      exit();
-    }
-
     if(isset($_POST['save'])) {
-      $sql = "INSERT INTO Users (firstname, lastname, email, phone)
+      $sql = "INSERT INTO Users (firstname,lastname,email,phone)
       VALUES('$fname','$lname','$email','$phone')";
 
-      if(!$result=mysqli_query($conn, $sql)) {
-        printf("Errormessage: %s\n", mysqli_error($result));
-        // die("Failed to execute query");
-      }
+      $result = mysqli_query($conn,$sql);
 
-      mysqli_close($conn);
+      if(!$result) {
+        printf("Errormessage: %s\n", mysqli_error($conn));
+      }
     }
+    mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +26,6 @@
     <title>PHP Form</title>
   </head>
   <body>
-    <h1>DB Config</h1>
-    <p><?php echo $conn ?></p>
-    <p><?php echo $result ?></p>
-    <p><?php echo $sql ?></p>
     <h1>Data saved!</h1>
     <p>First Name: <?php echo $fname ?></p>
     <p>Last Name: <?php echo $lname ?></p>
